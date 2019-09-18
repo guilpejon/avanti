@@ -4,6 +4,9 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "avanti/version"
 
 Gem::Specification.new do |spec|
+  spec.required_ruby_version = ">= #{Avanti::RUBY_VERSION}"
+  spec.required_rubygems_version = ">= 2.7.4"
+
   spec.name          = "avanti"
   spec.version       = Avanti::VERSION
   spec.authors       = ["Guilherme Pejon"]
@@ -38,6 +41,8 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.add_dependency 'rails', Avanti::RAILS_VERSION
 
   spec.add_development_dependency "bundler", "~> 2.0", ">= 2.0.2"
   spec.add_development_dependency "rake", "~> 10.0"
